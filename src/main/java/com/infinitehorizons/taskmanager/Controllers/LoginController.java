@@ -1,4 +1,4 @@
-package com.infinitehorizons.taskmanager;
+package com.infinitehorizons.taskmanager.Controllers;
 
 import com.infinitehorizons.taskmanager.DataBase.Connect;
 import javafx.event.ActionEvent;
@@ -34,10 +34,16 @@ public class LoginController implements Initializable {
     @FXML
     private TextField usernameTextField;
     @FXML
+    private TextField passwordShow;
+    @FXML
     private PasswordField passwordTextField;
+    @FXML
+    private Hyperlink forgotPass;
+    @FXML
+    private CheckBox selectShowPass;
 
     public void registerButtonOnAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("register.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/register.fxml")));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, 1280, 720);
         stage.setTitle("Task Manager - Register");
@@ -56,17 +62,39 @@ public class LoginController implements Initializable {
 
     }
 
+    public void forgotPassOnAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/forgot.fxml")));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root, 1280, 720);
+        stage.setTitle("Task Manager - Forgot Password");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void showPassOnAction() {
+        if (selectShowPass.isSelected()) {
+            passwordShow.setText(passwordTextField.getText());
+            passwordShow.setVisible(true);
+            passwordTextField.setVisible(false);
+        } else {
+            passwordTextField.setText(passwordShow.getText());
+            passwordShow.setVisible(false);
+            passwordTextField.setVisible(true);
+        }
+    }
+
     public void initialize (URL url, ResourceBundle resourceBundle) {
-        File brandingFile = new File("/com/infinitehorizons/taskmanager/Images/task-logo.jpeg");
+        File brandingFile = new File("src//main//resources//com//infinitehorizons//taskmanager//images//task-logo.png");
         Image brandingImage = new Image(brandingFile.toURI().toString());
         brandingImageView.setImage(brandingImage);
     }
+
 
     public void validateLogin () {
         Connect connectNow = new Connect();
         Connection connectDB = connectNow.getConnection();
 
-        String verifyLogin = "SELECT count(1) FROM user_account WHERE username = '" + usernameTextField.getText() + "' AND password = '" + passwordTextField.getText() + "'";
+        String verifyLogin = "SELECT count(1) FROM user_accounts WHERE username = '" + usernameTextField.getText() + "' AND password = '" + passwordTextField.getText() + "'";
 
         try {
             Statement statement = connectDB.createStatement();
