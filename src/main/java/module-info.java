@@ -14,4 +14,6 @@ module com.infinitehorizons.taskmanager {
 
     opens com.infinitehorizons.taskmanager to javafx.fxml;
     exports com.infinitehorizons.taskmanager;
+    exports com.infinitehorizons.taskmanager.Controllers;
+    opens com.infinitehorizons.taskmanager.Controllers to javafx.fxml;
 }
