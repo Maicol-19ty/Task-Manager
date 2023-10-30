@@ -84,7 +84,7 @@ public class LoginController implements Initializable {
     }
 
     public void initialize (URL url, ResourceBundle resourceBundle) {
-        File brandingFile = new File("src//main//resources//com//infinitehorizons//taskmanager//images//task-logo.png");
+        File brandingFile = new File("src//main//resources//com//infinitehorizons//taskmanager//images//task-logo-2.png");
         Image brandingImage = new Image(brandingFile.toURI().toString());
         brandingImageView.setImage(brandingImage);
     }
