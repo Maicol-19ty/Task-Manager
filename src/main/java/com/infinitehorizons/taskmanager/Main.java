@@ -19,7 +19,7 @@ public class Main extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.getIcons().add(new Image("file:src/main/resources/com/infinitehorizons/taskmanager/images/task-logo.png"));
+        stage.getIcons().add(new Image("file:src/main/resources/com/infinitehorizons/taskmanager/images/task-logo-2.png"));
         stage.getIcons().addAll(icons);
         stage.setTitle("Task Manager - Login");
         stage.setScene(scene);
