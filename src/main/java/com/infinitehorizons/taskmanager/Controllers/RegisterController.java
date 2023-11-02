@@ -33,7 +33,7 @@ public class RegisterController implements Initializable {
     private Stage stage;
     private Scene scene;
     @FXML
-    private ImageView brandingImageView;
+    private ImageView regbrandingImageView;
     @FXML
     private Label registerMessageLabel;
     @FXML
@@ -57,10 +57,17 @@ public class RegisterController implements Initializable {
 
 
 
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        File brandingFile = new File("src//main//resources//com//infinitehorizons//taskmanager//images//task-logo-2.png");
-        Image brandingImage = new Image(brandingFile.toURI().toString());
-        brandingImageView.setImage(brandingImage);
+
+        System.out.println("Pestaña de registro inicializada.");
+        File regbrandingFile = new File("src/main/resources/com/infinitehorizons/taskmanager/images/task-logo-2.png");
+        if (regbrandingFile.exists()) {
+            Image regbrandingImage = new Image(regbrandingFile.toURI().toString());
+            regbrandingImageView.setImage(regbrandingImage);
+        } else {
+            System.out.println("No se pudo encontrar la imagen en la ubicación especificada.");
+        }
 
         BooleanBinding passwordMatch = Bindings.createBooleanBinding(() ->
                 passwordTextField.getText().equals(confpasswordTextField.getText()),
@@ -70,9 +77,9 @@ public class RegisterController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if (newValue) {
-                    passwordMatchLabel.setText("You are set");
+                    passwordMatchLabel.setText("✅ You are set");
                 } else {
-                    passwordMatchLabel.setText("Do not match");
+                    passwordMatchLabel.setText("❌ Do not match");
                 }
             }
         });
@@ -82,24 +89,24 @@ public class RegisterController implements Initializable {
     @FXML
     private void passwordKeyRelease(KeyEvent event) {
         if (passwordTextField.getText().equals(confpasswordTextField.getText())) {
-            passwordMatchLabel.setText("You are set");
+            passwordMatchLabel.setText("✅ You are set");
         } else {
-            passwordMatchLabel.setText("Do not match");
+            passwordMatchLabel.setText("❌ Do not match");
         }
     }
 
     public void confirmPass() {
         if (passwordTextField.getText().equals(confpasswordTextField.getText())) {
-            passwordMatchLabel.setText("You are set");
+            passwordMatchLabel.setText("✅ You are set");
         } else {
-            passwordMatchLabel.setText("Do not match");
+            passwordMatchLabel.setText("❌ Do not match");
         }
     }
 
     public void loginButtonOnAction (ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/login.fxml")));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 1280, 720);
+        scene = new Scene(root, 1520, 790);
         stage.setTitle("Task Manager - Login");
         stage.setScene(scene);
         stage.show();
