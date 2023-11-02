@@ -45,7 +45,7 @@ public class LoginController implements Initializable {
     public void registerButtonOnAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/register.fxml")));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 1280, 720);
+        scene = new Scene(root, 1520, 790);
         stage.setTitle("Task Manager - Register");
         stage.setScene(scene);
         stage.show();
@@ -65,7 +65,7 @@ public class LoginController implements Initializable {
     public void forgotPassOnAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/forgot.fxml")));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 1280, 720);
+        scene = new Scene(root, 1520, 790);
         stage.setTitle("Task Manager - Forgot Password");
         stage.setScene(scene);
         stage.show();
@@ -83,6 +83,7 @@ public class LoginController implements Initializable {
         }
     }
 
+    @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
         File brandingFile = new File("src//main//resources//com//infinitehorizons//taskmanager//images//task-logo-2.png");
         Image brandingImage = new Image(brandingFile.toURI().toString());
