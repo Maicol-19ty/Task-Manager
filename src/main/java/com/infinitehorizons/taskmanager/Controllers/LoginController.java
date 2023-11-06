@@ -1,6 +1,7 @@
 package com.infinitehorizons.taskmanager.Controllers;
 
 import com.infinitehorizons.taskmanager.DataBase.Connect;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +23,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
 
 public class LoginController implements Initializable {
 
@@ -39,6 +40,8 @@ public class LoginController implements Initializable {
     private PasswordField passwordTextField;
     @FXML
     private Hyperlink forgotPass;
+    @FXML
+    private Button loginButton;
     @FXML
     private CheckBox selectShowPass;
 
@@ -59,7 +62,6 @@ public class LoginController implements Initializable {
         } else {
             loginMessageLabel.setText("Please enter username and password");
         }
-
     }
 
     public void forgotPassOnAction(ActionEvent event) throws IOException {
@@ -104,17 +106,31 @@ public class LoginController implements Initializable {
             while (resultSet.next()) {
                 if (resultSet.getInt(1) == 1) {
                     loginMessageLabel.setText("Congratulations!");
+                    redirectToMainPage();
                 } else {
                     loginMessageLabel.setText("Invalid login. Please try again.");
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
-
     }
 
-
+    public void redirectToMainPage() {
+        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        pause.setOnFinished(event -> {
+            try {
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/home.fxml")));
+                Stage stage = (Stage) loginButton.getScene().getWindow();
+                Scene scene = new Scene(root, 1520, 790);
+                stage.setTitle("Task Manager - Home");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        pause.play();
+    }
 }
