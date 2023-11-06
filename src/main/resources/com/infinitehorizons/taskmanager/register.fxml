@@ -208,7 +208,7 @@
                <DropShadow />
             </effect>
          </Button>
-         <Label fx:id="passwordMatchLabel" alignment="CENTER" layoutX="525.0" layoutY="470.0" prefHeight="14.0" prefWidth="120.0" textAlignment="CENTER" textFill="RED">
+         <Label fx:id="passwordMatchLabel" alignment="CENTER" layoutX="510.0" layoutY="470.0" prefHeight="14.0" prefWidth="150.0" textAlignment="CENTER" textFill="RED">
             <font>
                <Font name="Hack Nerd Font Bold" size="12.0" />
             </font>
