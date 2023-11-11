@@ -12,7 +12,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1520.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infinitehorizons.taskmanager.Controllers.ForgotController">
    <left>
-      <AnchorPane prefHeight="720.0" prefWidth="580.0" style="-fx-background-color: #414288;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="720.0" prefWidth="580.0" style="-fx-background-color: #415055;" BorderPane.alignment="CENTER">
          <Label alignment="CENTER" layoutX="211.0" layoutY="500.0" prefHeight="45.0" prefWidth="158.0" text="Manager" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="Hack Nerd Font Bold" size="36.0" />
