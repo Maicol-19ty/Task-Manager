@@ -15,7 +15,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1520.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infinitehorizons.taskmanager.Controllers.RegisterController">
    <left>
-      <AnchorPane prefHeight="720.0" prefWidth="580.0" style="-fx-background-color: #414288;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="720.0" prefWidth="580.0" style="-fx-background-color: #415055;" BorderPane.alignment="CENTER">
          <Label alignment="CENTER" layoutX="211.0" layoutY="500.0" prefHeight="45.0" prefWidth="158.0" text="Manager" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="Hack Nerd Font Bold" size="36.0" />
@@ -112,7 +112,7 @@
                <Cursor fx:constant="DEFAULT" />
             </cursor>
          </Label>
-         <TextField fx:id="emailTextField" layoutX="470.0" layoutY="145.0" prefHeight="35.0" prefWidth="230.0" promptText="Email">
+         <TextField fx:id="emailTextField" layoutX="470.0" layoutY="145.0" onKeyPressed="#handleEnterKey" prefHeight="35.0" prefWidth="230.0" promptText="Email">
             <cursor>
                <Cursor fx:constant="TEXT" />
             </cursor>
@@ -123,7 +123,7 @@
                <Font name="Hack Nerd Font Regular" size="18.0" />
             </font>
          </TextField>
-         <TextField fx:id="firstnameTextField" layoutX="470.0" layoutY="215.0" prefHeight="35.0" prefWidth="230.0" promptText="First Name">
+         <TextField fx:id="firstnameTextField" layoutX="470.0" layoutY="215.0" onKeyPressed="#handleEnterKey" prefHeight="35.0" prefWidth="230.0" promptText="First Name">
             <cursor>
                <Cursor fx:constant="TEXT" />
             </cursor>
@@ -134,7 +134,7 @@
                <Font name="Hack Nerd Font Regular" size="18.0" />
             </font>
          </TextField>
-         <TextField fx:id="lastnameTextField" layoutX="470.0" layoutY="286.0" prefHeight="35.0" prefWidth="230.0" promptText="Last Name">
+         <TextField fx:id="lastnameTextField" layoutX="470.0" layoutY="286.0" onKeyPressed="#handleEnterKey" prefHeight="35.0" prefWidth="230.0" promptText="Last Name">
             <cursor>
                <Cursor fx:constant="TEXT" />
             </cursor>
@@ -145,7 +145,7 @@
                <Font name="Hack Nerd Font Regular" size="18.0" />
             </font>
          </TextField>
-         <TextField fx:id="usernameTextField" layoutX="470.0" layoutY="356.0" prefHeight="35.0" prefWidth="230.0" promptText="Username">
+         <TextField fx:id="usernameTextField" layoutX="470.0" layoutY="356.0" onKeyPressed="#handleEnterKey" prefHeight="35.0" prefWidth="230.0" promptText="Username">
             <cursor>
                <Cursor fx:constant="TEXT" />
             </cursor>
@@ -156,7 +156,7 @@
                <Font name="Hack Nerd Font Regular" size="18.0" />
             </font>
          </TextField>
-         <PasswordField fx:id="passwordTextField" layoutX="470.0" layoutY="426.0" onKeyReleased="#passwordKeyRelease" prefHeight="35.0" prefWidth="230.0" promptText="Password">
+         <PasswordField fx:id="passwordTextField" layoutX="470.0" layoutY="426.0" onKeyPressed="#handleEnterKey" onKeyReleased="#passwordKeyRelease" prefHeight="35.0" prefWidth="230.0" promptText="Password">
             <cursor>
                <Cursor fx:constant="TEXT" />
             </cursor>
@@ -167,7 +167,7 @@
                <Font name="Hack Nerd Font Regular" size="18.0" />
             </font>
          </PasswordField>
-         <PasswordField fx:id="confpasswordTextField" layoutX="470.0" layoutY="496.0" onKeyReleased="#passwordKeyRelease" prefHeight="35.0" prefWidth="230.0" promptText="Password">
+         <PasswordField fx:id="confpasswordTextField" layoutX="470.0" layoutY="496.0" onKeyPressed="#handleEnterKey" onKeyReleased="#passwordKeyRelease" prefHeight="35.0" prefWidth="230.0" promptText="Password">
             <cursor>
                <Cursor fx:constant="TEXT" />
             </cursor>
@@ -186,7 +186,7 @@
                <Cursor fx:constant="DEFAULT" />
             </cursor>
          </Label>
-         <Button fx:id="registerButton" contentDisplay="CENTER" layoutX="295.0" layoutY="625.0" mnemonicParsing="false" onAction="#registerButtonOnAction" prefHeight="46.0" prefWidth="350.0" style="-fx-background-color: #414288;" text="Sing Up" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="registerButton" contentDisplay="CENTER" layoutX="295.0" layoutY="625.0" mnemonicParsing="false" onAction="#registerButtonOnAction" prefHeight="46.0" prefWidth="350.0" style="-fx-background-color: #415055;" text="Sing Up" textAlignment="CENTER" textFill="WHITE">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
@@ -197,7 +197,7 @@
                <DropShadow />
             </effect>
          </Button>
-         <Button fx:id="loginButton" contentDisplay="CENTER" layoutX="295.0" layoutY="700.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="46.0" prefWidth="350.0" style="-fx-background-color: #414288;" text="Login" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="loginButton" contentDisplay="CENTER" layoutX="295.0" layoutY="700.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="46.0" prefWidth="350.0" style="-fx-background-color: #415055;" text="Login" textAlignment="CENTER" textFill="WHITE">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
