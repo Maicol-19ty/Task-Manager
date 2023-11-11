@@ -1,0 +1,4 @@
+.text-field:focused {
+    -fx-color:  #415055;
+    -fx-faint-focus-color: #415055;
+}
