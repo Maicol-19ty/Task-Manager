@@ -9,10 +9,10 @@ public class Connect {
     public Connection databaseLink;
 
     public Connection getConnection()  {
-        String databaseName = "bs3as3yvtz0sthxrb2ul";
-        String username = "u8gyahbpad4guuiq";
-        String password = "zsTCkDsaAOZ6OuIDNRUw";
-        String url = "jdbc:mysql://bs3as3yvtz0sthxrb2ul-mysql.services.clever-cloud.com:21251/" + databaseName;
+        String databaseName = "task-manager";
+        String username = "root";
+        String password = "Manager23";
+        String url = "jdbc:mysql://task-manager.ctm72fipu0iz.us-east-2.rds.amazonaws.com:3306/" + databaseName;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             databaseLink = DriverManager.getConnection(url, username, password);
