@@ -5,7 +5,6 @@ import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,9 +18,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.beans.value.ChangeListener;
 import javafx.util.Duration;
 
 import java.io.File;
@@ -31,9 +30,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Date;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class RegisterController implements Initializable {
 
@@ -57,6 +54,7 @@ public class RegisterController implements Initializable {
     private TextField usernameTextField;
     @FXML
     private Label passwordMatchLabel;
+    private List<TextField> textFields;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -71,20 +69,20 @@ public class RegisterController implements Initializable {
         }
 
         BooleanBinding passwordMatch = Bindings.createBooleanBinding(() ->
-                        passwordTextField.getText().equals(confpasswordTextField.getText()),
+                        passwordTextField.getText().equals(confpasswordTextField.getText()) &&
+                                passwordTextField.getText().length() >= 8,
                 passwordTextField.textProperty(), confpasswordTextField.textProperty());
 
-        passwordMatch.addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (newValue) {
-                    passwordMatchLabel.setText("✅ You are set");
-                } else {
-                    passwordMatchLabel.setText("❌ Do not match");
-                }
+        passwordMatch.addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                passwordMatchLabel.setText("✅ You are set");
+            } else {
+                passwordMatchLabel.setText("❌ Passwords do not match or are too short");
             }
         });
         registerButton.disableProperty().bind(passwordMatch.not());
+
+        textFields = Arrays.asList(emailTextField, firstnameTextField, lastnameTextField, usernameTextField, passwordTextField, confpasswordTextField);
     }
 
     @FXML
@@ -131,7 +129,7 @@ public class RegisterController implements Initializable {
 
     public void register () {
 
-        String checkUsername = "SELECT * FROM user_accounts WHERE username = '" + usernameTextField.getText() + "'";
+        String checkUsername = "SELECT * FROM users_accounts WHERE username = '" + usernameTextField.getText() + "'";
 
         Connect connectNow = new Connect();
         Connection connectDB = connectNow.getConnection();
@@ -147,7 +145,7 @@ public class RegisterController implements Initializable {
 
                 registerMessageLabel.setText("Registering...");
 
-                String insertData = "INSERT INTO user_accounts (email, firstname, lastname, username, password, date) VALUES (?, ?, ?, ?, ?, ?)";
+                String insertData = "INSERT INTO users_accounts (email, firstname, lastname, username, password, date) VALUES (?, ?, ?, ?, ?, ?)";
 
                 PreparedStatement preparedStatement = connectDB.prepareStatement(insertData);
 
@@ -207,20 +205,39 @@ public class RegisterController implements Initializable {
         registerMessageLabel.setText("Registering...");
         registerMessageLabel.setVisible(true);
 
-        FadeTransition fade = new FadeTransition(Duration.seconds(3), registerMessageLabel);
+        FadeTransition fade = new FadeTransition(Duration.seconds(1), registerMessageLabel);
         fade.setFromValue(0.0);
         fade.setToValue(1.0);
         fade.play();
     }
 
     public void stopRegisteringAnimation() {
-        FadeTransition fade = new FadeTransition(Duration.seconds(3), registerMessageLabel);
+        FadeTransition fade = new FadeTransition(Duration.seconds(1), registerMessageLabel);
         fade.setFromValue(1.0);
         fade.setToValue(0.0);
         fade.setOnFinished(event -> {
             registerMessageLabel.setVisible(false);
+            registerMessageLabel.setText("");
         });
         fade.play();
+    }
+
+    private void nextTextField(Node source) throws IOException {
+        int currentIndex = textFields.indexOf(source);
+
+        if (currentIndex < textFields.size() - 1) {
+            TextField nextField = textFields.get(currentIndex + 1);
+
+            nextField.requestFocus();
+        }
+    }
+
+    @FXML
+    private void handleEnterKey(KeyEvent event) throws IOException {
+        if (event.getCode() == KeyCode.ENTER) {
+            Node source = (Node) event.getSource();
+            nextTextField(source);
+        }
     }
 
 }
