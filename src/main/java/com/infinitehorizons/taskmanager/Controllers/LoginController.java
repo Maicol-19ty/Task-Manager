@@ -49,6 +49,7 @@ public class LoginController implements Initializable {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/register.fxml")));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, 1520, 790);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/Style/Style.css")).toExternalForm());
         stage.setTitle("Task Manager - Register");
         stage.setScene(scene);
         stage.show();
@@ -97,7 +98,7 @@ public class LoginController implements Initializable {
         Connect connectNow = new Connect();
         Connection connectDB = connectNow.getConnection();
 
-        String verifyLogin = "SELECT count(1) FROM user_accounts WHERE username = '" + usernameTextField.getText() + "' AND password = '" + passwordTextField.getText() + "'";
+        String verifyLogin = "SELECT count(1) FROM users_accounts WHERE username = '" + usernameTextField.getText() + "' AND password = '" + passwordTextField.getText() + "'";
 
         try {
             Statement statement = connectDB.createStatement();
@@ -108,7 +109,7 @@ public class LoginController implements Initializable {
                     loginMessageLabel.setText("Congratulations!");
                     redirectToMainPage();
                 } else {
-                    loginMessageLabel.setText("Invalid login. Please try again.");
+                    loginMessageLabel.setText("User not found please try again.");
                 }
             }
         } catch (Exception e) {
