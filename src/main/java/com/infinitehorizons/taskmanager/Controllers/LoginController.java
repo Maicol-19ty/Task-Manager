@@ -70,6 +70,7 @@ public class LoginController implements Initializable {
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, 1520, 790);
         stage.setTitle("Task Manager - Forgot Password");
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/Style/Style.css")).toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
