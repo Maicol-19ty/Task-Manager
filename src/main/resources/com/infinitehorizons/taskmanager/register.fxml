@@ -104,7 +104,7 @@
                <Cursor fx:constant="DEFAULT" />
             </cursor>
          </Label>
-         <Label alignment="CENTER" layoutX="157.0" layoutY="492.0" prefHeight="44.0" prefWidth="236.0" text="Confirm Password" textAlignment="CENTER">
+         <Label alignment="CENTER" layoutX="177.0" layoutY="492.0" prefHeight="44.0" prefWidth="236.0" text="Confirm Password" textAlignment="CENTER">
             <font>
                <Font name="Hack Nerd Font Bold" size="24.0" />
             </font>
@@ -178,7 +178,7 @@
                <Font name="Hack Nerd Font Regular" size="18.0" />
             </font>
          </PasswordField>
-         <Label fx:id="registerMessageLabel" alignment="CENTER" layoutX="178.0" layoutY="549.0" prefHeight="44.0" prefWidth="584.0" textAlignment="CENTER" textFill="RED">
+         <Label fx:id="registerMessageLabel" alignment="CENTER" layoutX="178.0" layoutY="545.0" prefHeight="65.0" prefWidth="584.0" textAlignment="CENTER" textFill="RED">
             <font>
                <Font name="Hack Nerd Font Bold" size="18.0" />
             </font>
