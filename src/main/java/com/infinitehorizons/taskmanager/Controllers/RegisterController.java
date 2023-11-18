@@ -23,13 +23,17 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.*;
 
 public class RegisterController implements Initializable {
@@ -110,6 +114,7 @@ public class RegisterController implements Initializable {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/login.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 1520, 790);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/Style/Style.css")).toExternalForm());
         stage.setTitle("Task Manager - Login");
         stage.setScene(scene);
         stage.show();
@@ -127,27 +132,35 @@ public class RegisterController implements Initializable {
         }
     }
 
-    public void register () {
-
-        String checkUsername = "SELECT * FROM users_accounts WHERE username = '" + usernameTextField.getText() + "'";
+    public void register() {
+        String checkData = "SELECT * FROM users_accounts WHERE username = ? OR email = ?";
 
         Connect connectNow = new Connect();
         Connection connectDB = connectNow.getConnection();
 
         try {
-            Statement statement = connectDB.createStatement();
-            ResultSet resultSet = statement.executeQuery(checkUsername);
+            PreparedStatement preparedStatement = connectDB.prepareStatement(checkData);
+            preparedStatement.setString(1, usernameTextField.getText());
+            preparedStatement.setString(2, emailTextField.getText());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                registerMessageLabel.setText(usernameTextField.getText() + " is already in use");
-                stopRegisteringAnimation();
-            } else {
+                String existingUsername = resultSet.getString("username");
+                String existingEmail = resultSet.getString("email");
 
+                if (existingUsername.equals(usernameTextField.getText())) {
+                    registerMessageLabel.setText(usernameTextField.getText() + " is already in use");
+                    stopRegisteringAnimation();
+                } else if (existingEmail.equals(emailTextField.getText())) {
+                    sendReminderEmail(emailTextField.getText(), existingUsername);
+                    registerMessageLabel.setText("Check your email, there is already a \n\nregistered user with this email");
+                }
+            } else {
                 registerMessageLabel.setText("Registering...");
 
                 String insertData = "INSERT INTO users_accounts (email, firstname, lastname, username, password, date) VALUES (?, ?, ?, ?, ?, ?)";
-
-                PreparedStatement preparedStatement = connectDB.prepareStatement(insertData);
+                preparedStatement = connectDB.prepareStatement(insertData);
 
                 preparedStatement.setString(1, emailTextField.getText());
                 preparedStatement.setString(2, firstnameTextField.getText());
@@ -181,7 +194,8 @@ public class RegisterController implements Initializable {
         usernameTextField.setText("");
         passwordTextField.setText("");
         confpasswordTextField.setText("");
-        confpasswordTextField.setText("");
+        passwordMatchLabel.setText("");
+        registerMessageLabel.setText("");
     }
 
     public void redirectToMainPage() {
@@ -191,6 +205,7 @@ public class RegisterController implements Initializable {
                 Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/home.fxml")));
                 Stage stage = (Stage) registerButton.getScene().getWindow();
                 Scene scene = new Scene(root, 1520, 790);
+                scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/Style/Style.css")).toExternalForm());
                 stage.setTitle("Task Manager - Home");
                 stage.setScene(scene);
                 stage.show();
@@ -237,6 +252,49 @@ public class RegisterController implements Initializable {
         if (event.getCode() == KeyCode.ENTER) {
             Node source = (Node) event.getSource();
             nextTextField(source);
+        }
+    }
+
+    private void sendReminderEmail(String userEmail, String username) {
+        final String usernameEmail = "team.taskmgr@gmail.com";
+        final String password = "wtah przp lkzg gror";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(usernameEmail, password);
+            }
+        });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(usernameEmail));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(userEmail));
+            message.setSubject("Task Manager Accounts Reminder");
+
+            // HTML y CSS para el cuerpo del correo
+            String htmlBody = "<div style=\"background-color:#415055; padding:20px;\">" +
+                    "<div style=\"text-align: center;\">" +
+                    "<h1 style=\"color:#ffffff; font-size:24px;\">Task Manager</h1>" +
+                    "</div>" +
+                    "<div style=\"background-color:#ffffff; padding:20px; text-align: left; font-size:16px;\">" +
+                    "<p style=\"color:#555555;\">Hello user,</p>" +
+                    "<p style=\"color:#555555;\">You are receiving this email because it has been detected that you are trying to create a <br/>new account with this email. We remind you of your username so you can log in.</p>" +
+                    "<p style=\"color:#555555;\">Username: <strong>" + username + "</strong></p>" +
+                    "<p style=\"color:#555555;\">Regards<br/>Task Manager</p>" +
+                    "</div>" +
+                    "</div>";
+
+            message.setContent(htmlBody, "text/html; charset=utf-8");
+
+            Transport.send(message);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
         }
     }
 
