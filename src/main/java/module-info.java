@@ -11,6 +11,7 @@ module com.infinitehorizons.taskmanager {
     requires java.sql;
     requires mysql.connector.j;
     requires java.desktop;
+    requires java.mail;
 
     opens com.infinitehorizons.taskmanager to javafx.fxml;
     exports com.infinitehorizons.taskmanager;
