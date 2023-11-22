@@ -59,6 +59,7 @@ public class RegisterController implements Initializable {
     @FXML
     private Label passwordMatchLabel;
     private List<TextField> textFields;
+    private String username;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -177,9 +178,11 @@ public class RegisterController implements Initializable {
 
                 registerMessageLabel.setText("User registered successfully");
 
+                String userName = usernameTextField.getText();
+
                 registerClearFields();
 
-                redirectToMainPage();
+                redirectToMainPage(userName);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -198,11 +201,16 @@ public class RegisterController implements Initializable {
         registerMessageLabel.setText("");
     }
 
-    public void redirectToMainPage() {
+    public void redirectToMainPage(String userName) {
+        startRegisteringAnimation();
         PauseTransition pause = new PauseTransition(Duration.seconds(3));
         pause.setOnFinished(event -> {
+            stopRegisteringAnimation();
             try {
-                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/home.fxml")));
+                HomeController controller = new HomeController(userName);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/infinitehorizons/taskmanager/home.fxml"));
+                loader.setController(controller);
+                Parent root = loader.load();
                 Stage stage = (Stage) registerButton.getScene().getWindow();
                 Scene scene = new Scene(root, 1520, 790);
                 scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/Style/Style.css")).toExternalForm());

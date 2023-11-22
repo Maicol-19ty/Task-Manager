@@ -28,6 +28,7 @@ public class LoginController implements Initializable {
 
     private Stage stage;
     private Scene scene;
+    private String userName;
     @FXML
     private Label loginMessageLabel;
     @FXML
@@ -107,8 +108,9 @@ public class LoginController implements Initializable {
 
             while (resultSet.next()) {
                 if (resultSet.getInt(1) == 1) {
+                    userName = usernameTextField.getText();
                     loginMessageLabel.setText("Congratulations!");
-                    redirectToMainPage();
+                    redirectToMainPage(userName);
                 } else {
                     loginMessageLabel.setText("User not found please try again.");
                 }
@@ -119,11 +121,14 @@ public class LoginController implements Initializable {
         }
     }
 
-    public void redirectToMainPage() {
+    public void redirectToMainPage(String userName) {
         PauseTransition pause = new PauseTransition(Duration.seconds(3));
         pause.setOnFinished(event -> {
             try {
-                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/home.fxml")));
+                HomeController controller = new HomeController(userName);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/infinitehorizons/taskmanager/home.fxml"));
+                loader.setController(controller);
+                Parent root = loader.load();
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 Scene scene = new Scene(root, 1520, 790);
                 stage.setTitle("Task Manager - Home");
