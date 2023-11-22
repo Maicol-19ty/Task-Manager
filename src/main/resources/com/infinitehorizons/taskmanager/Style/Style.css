@@ -2,3 +2,47 @@
     -fx-color:  #415055;
     -fx-faint-focus-color: #415055;
 }
+
+.sideAnkerPane {
+    -fx-background-color: #343434;
+    -fx-border-color: #415055;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 0px 20px 20px 0px;
+    -fx-background-radius: 0px 20px 20px 0px;
+    -fx-border-style: solid;
+    -fx-effect: dropshadow(gaussian, #415055, 10, 0, 0, 0);
+}
+
+.bar {
+    -fx-background-color: #343434;
+    -fx-border-color: #415055;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian, #415055, 10, 0, 0, 0);
+}
+
+.root {
+    -fx-background-color: #E7E9E7;
+}
+
+.mostInnerPane {
+    -fx-background-color: #36393f;
+    -fx-border-color: #415055;
+    -fx-border-width: 2px ;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-effect: dropshadow(gaussian, #415055, 10, 0, 0, 0);
+}
+
+.homeButton {
+    -fx-background-color: #36393f;
+    -fx-border-color: #415055;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-effect: dropshadow(gaussian, #415055, 10, 0, 0, 0);
+}
+
