@@ -1,8 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="790.0" prefWidth="1520.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infinitehorizons.taskmanager.Controllers.HomeController">
-
-</AnchorPane>
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1590.0" styleClass="root" stylesheets="@Style/Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <VBox prefHeight="1000.0" prefWidth="240.0">
+      <AnchorPane fx:id="sideAnkerPane" prefHeight="1000.0" prefWidth="1520.0" styleClass="sideAnkerPane" stylesheets="@Style/Style.css">
+         <Pane fx:id="innerPane" layoutX="18.0" layoutY="20.0" prefHeight="70.0" prefWidth="200.0" styleClass="bar" stylesheets="@Style/Style.css">
+            <ImageView fx:id="homeImage" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@images/task-logo-2.png" />
+            </ImageView>
+            <Pane fx:id="mostInnerPane" layoutX="145.0" layoutY="10.0" prefHeight="50.0" prefWidth="30.0" styleClass="mostInnerPane" stylesheets="@Style/Style.css">
+               <children>
+                  <ImageView fitHeight="70.0" fitWidth="40.0" layoutX="-5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/menu.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </Pane>
+         <Button fx:id="homeButton" layoutX="30.0" layoutY="167.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="180.0" styleClass="homeButton" stylesheets="@Style/Style.css" text="  Home" textFill="WHITE">
+            <font>
+               <Font name="Hack Nerd Font Regular" size="18.0" />
+            </font>
+         </Button>
+         <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="51.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/home.png" />
+            </image>
+         </ImageView>
+         <Button fx:id="homeButton1" layoutX="30.0" layoutY="241.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="180.0" styleClass="homeButton" stylesheets="@Style/Style.css" text="   Tasks" textFill="WHITE">
+            <font>
+               <Font name="Hack Nerd Font Regular" size="18.0" />
+            </font>
+         </Button>
+         <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="51.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/tasks.png" />
+            </image>
+         </ImageView>
+         <Button fx:id="homeButton11" layoutX="30.0" layoutY="318.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="180.0" styleClass="homeButton" stylesheets="@Style/Style.css" text="   Notes" textFill="WHITE">
+            <font>
+               <Font name="Hack Nerd Font Regular" size="18.0" />
+            </font>
+         </Button>
+         <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="51.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/notes.png" />
+            </image>
+         </ImageView>
+         <Button fx:id="homeButton111" layoutX="28.0" layoutY="400.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="180.0" styleClass="homeButton" stylesheets="@Style/Style.css" text="      Settings" textAlignment="CENTER" textFill="WHITE">
+            <font>
+               <Font name="Hack Nerd Font Regular" size="18.0" />
+            </font>
+         </Button>
+         <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="51.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/settings.png" />
+            </image>
+         </ImageView>
+         <Label fx:id="usernameHome" layoutX="91.0" layoutY="643.0" prefHeight="21.0" prefWidth="120.0" textFill="WHITE">
+            <font>
+               <Font name="Hack Nerd Font Regular" size="18.0" />
+            </font>
+         </Label>
+         <ImageView fx:id="avatarHome" fitHeight="50.0" fitWidth="50.0" layoutX="30.0" layoutY="629.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/user.png" />
+            </image>
+         </ImageView>
+      </AnchorPane>
+   </VBox>
+</HBox>
