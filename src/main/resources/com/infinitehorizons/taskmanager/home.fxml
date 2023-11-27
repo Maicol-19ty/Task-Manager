@@ -1,82 +1,264 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1590.0" styleClass="root" stylesheets="@Style/Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-   <VBox prefHeight="1000.0" prefWidth="240.0">
-      <AnchorPane fx:id="sideAnkerPane" prefHeight="1000.0" prefWidth="1520.0" styleClass="sideAnkerPane" stylesheets="@Style/Style.css">
-         <Pane fx:id="innerPane" layoutX="18.0" layoutY="20.0" prefHeight="70.0" prefWidth="200.0" styleClass="bar" stylesheets="@Style/Style.css">
-            <ImageView fx:id="homeImage" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <Image url="@images/task-logo-2.png" />
-            </ImageView>
-            <Pane fx:id="mostInnerPane" layoutX="145.0" layoutY="10.0" prefHeight="50.0" prefWidth="30.0" styleClass="mostInnerPane" stylesheets="@Style/Style.css">
-               <children>
-                  <ImageView fitHeight="70.0" fitWidth="40.0" layoutX="-5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/menu.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-         </Pane>
-         <Button fx:id="homeButton" layoutX="30.0" layoutY="167.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="180.0" styleClass="homeButton" stylesheets="@Style/Style.css" text="  Home" textFill="WHITE">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0"
+      prefWidth="1520.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <VBox prefHeight="790.0" prefWidth="240.0">
+      <AnchorPane fx:id="sideAnkerPane" prefHeight="790.0" prefWidth="240.0" styleClass="sideAnkerPane"
+                  stylesheets="@Style/Style.css">
+         <Button fx:id="homeButton" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="30.0"
+                 layoutY="250.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0"
+                 styleClass="homeButton" stylesheets="@Style/Style.css" text="  Home">
             <font>
-               <Font name="Hack Nerd Font Regular" size="18.0" />
+               <Font name="SansSerif Regular" size="18.0"/>
             </font>
+            <opaqueInsets>
+               <Insets/>
+            </opaqueInsets>
+            <cursor>
+               <Cursor fx:constant="HAND"/>
+            </cursor>
          </Button>
-         <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="51.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/home.png" />
-            </image>
+         <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="50.0" layoutY="260.0" pickOnBounds="true"
+                    preserveRatio="true">
+            <Image url="@images/home.png"/>
          </ImageView>
-         <Button fx:id="homeButton1" layoutX="30.0" layoutY="241.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="180.0" styleClass="homeButton" stylesheets="@Style/Style.css" text="   Tasks" textFill="WHITE">
+         <Button fx:id="taskButton" layoutX="30.0" layoutY="330.0" mnemonicParsing="false"
+                 onAction="#redirectToTaskPage" prefHeight="60.0" prefWidth="180.0" styleClass="homeButton"
+                 stylesheets="@Style/Style.css" text="   Tasks">
             <font>
-               <Font name="Hack Nerd Font Regular" size="18.0" />
+               <Font name="SansSerif Regular" size="18.0"/>
             </font>
+            <cursor>
+               <Cursor fx:constant="HAND"/>
+            </cursor>
          </Button>
-         <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="51.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/tasks.png" />
-            </image>
+         <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="50.0" layoutY="340.0" pickOnBounds="true"
+                    preserveRatio="true">
+            <Image url="@images/tasks.png"/>
          </ImageView>
-         <Button fx:id="homeButton11" layoutX="30.0" layoutY="318.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="180.0" styleClass="homeButton" stylesheets="@Style/Style.css" text="   Notes" textFill="WHITE">
+         <Button fx:id="homeButton11" layoutX="30.0" layoutY="410.0" mnemonicParsing="false" prefHeight="60.0"
+                 prefWidth="180.0" styleClass="homeButton" stylesheets="@Style/Style.css" text="   Notes">
             <font>
-               <Font name="Hack Nerd Font Regular" size="18.0" />
+               <Font name="SansSerif Regular" size="18.0"/>
             </font>
+            <cursor>
+               <Cursor fx:constant="HAND"/>
+            </cursor>
          </Button>
-         <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="51.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/notes.png" />
-            </image>
+         <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="50.0" layoutY="420.0" pickOnBounds="true"
+                    preserveRatio="true">
+            <Image url="@images/notes.png"/>
          </ImageView>
-         <Button fx:id="homeButton111" layoutX="28.0" layoutY="400.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="180.0" styleClass="homeButton" stylesheets="@Style/Style.css" text="      Settings" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="homeButton111" layoutX="30.0" layoutY="490.0" mnemonicParsing="false" prefHeight="60.0"
+                 prefWidth="180.0" styleClass="homeButton" stylesheets="@Style/Style.css" text="      Settings"
+                 textAlignment="CENTER">
             <font>
-               <Font name="Hack Nerd Font Regular" size="18.0" />
+               <Font name="SansSerif Regular" size="18.0"/>
             </font>
+            <cursor>
+               <Cursor fx:constant="HAND"/>
+            </cursor>
          </Button>
-         <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="51.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/settings.png" />
-            </image>
+         <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="50.0" layoutY="500.0" pickOnBounds="true"
+                    preserveRatio="true">
+            <Image url="@images/settings.png"/>
          </ImageView>
-         <Label fx:id="usernameHome" layoutX="91.0" layoutY="643.0" prefHeight="21.0" prefWidth="120.0" textFill="WHITE">
+         <Label fx:id="usernameHome" layoutX="86.0" layoutY="645.0" prefHeight="21.0" prefWidth="120.0"
+                textFill="WHITE">
             <font>
-               <Font name="Hack Nerd Font Regular" size="18.0" />
+               <Font name="SansSerif Bold" size="18.0"/>
             </font>
          </Label>
-         <ImageView fx:id="avatarHome" fitHeight="50.0" fitWidth="50.0" layoutX="30.0" layoutY="629.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/user.png" />
-            </image>
+         <ImageView fx:id="avatarHome" fitHeight="50.0" fitWidth="50.0" layoutX="26.0" layoutY="630.0"
+                    pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/user.png"/>
          </ImageView>
+         <VBox fx:id="headMenu" layoutX="1.0" prefHeight="200.0" prefWidth="240.0" stylesheets="@Style/Style.css">
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="headMenu" stylesheets="@Style/Style.css">
+               <ImageView fx:id="homeImage" fitHeight="100.0" fitWidth="100.0" layoutX="70.0" layoutY="50.0"
+                          pickOnBounds="true" preserveRatio="true">
+                  <Image url="@images/task-logo-2.png"/>
+               </ImageView>
+            </Pane>
+         </VBox>
       </AnchorPane>
    </VBox>
+   <Pane prefHeight="790.0" prefWidth="1280.0" style="-fx-background-color: #415055;" stylesheets="@Style/Style.css">
+      <Pane fx:id="paneBackground" prefHeight="360.0" prefWidth="1280.0" styleClass="paneBackground"
+            stylesheets="@Style/Style.css">
+         <Label fx:id="helloLabel" layoutX="14.0" layoutY="35.0" prefHeight="40.0" prefWidth="250.0"
+                textFill="WHITE">
+            <font>
+               <Font name="SansSerif Bold" size="20.0"/>
+            </font>
+            <cursor>
+               <Cursor fx:constant="TEXT"/>
+            </cursor>
+         </Label>
+         <Separator halignment="RIGHT" orientation="VERTICAL" prefHeight="790.0"/>
+         <VBox fx:id="calendarBox" layoutX="840.0" layoutY="200.0" prefHeight="350.0" prefWidth="400.0"
+               style="-fx-background-color: #36393f;" styleClass="scrollPane" stylesheets="@Style/Style.css">
+            <AnchorPane fx:id="calendarAnchor" prefHeight="350.0" prefWidth="400.0">
+               <Label layoutX="-2.0" text="CALENDAR 📅" textFill="WHITE">
+                  <font>
+                     <Font name="SansSerif Bold" size="18.0"/>
+                  </font>
+                  <padding>
+                     <Insets left="10.0" top="10.0"/>
+                  </padding>
+               </Label>
+               <Label fx:id="dateLabelCal" alignment="CENTER" contentDisplay="CENTER" layoutX="65.0"
+                      layoutY="51.0" prefHeight="20.0" prefWidth="300.0" textAlignment="CENTER"
+                      textFill="WHITE">
+                  <font>
+                     <Font name="SansSerif Bold" size="14.0"/>
+                  </font>
+               </Label>
+               <Label fx:id="horaCalendar" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0"
+                      layoutY="115.0" prefHeight="15.0" prefWidth="35.0" textAlignment="CENTER"
+                      textFill="WHITE">
+                  <font>
+                     <Font name="SansSerif Regular" size="12.0"/>
+                  </font>
+               </Label>
+               <Separator layoutX="100.0" layoutY="120.0" prefWidth="230.0"
+                          style="-fx-background-color: E7E9E7;"/>
+               <Label fx:id="horaCalendar1" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0"
+                      layoutY="180.0" prefHeight="15.0" prefWidth="35.0" textAlignment="CENTER"
+                      textFill="WHITE">
+                  <font>
+                     <Font name="SansSerif Regular" size="12.0"/>
+                  </font>
+               </Label>
+               <Separator layoutX="100.0" layoutY="185.0" prefWidth="230.0"
+                          style="-fx-background-color: E7E9E7;"/>
+               <Label fx:id="horaCalendar2" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0"
+                      layoutY="245.0" prefHeight="15.0" prefWidth="35.0" textAlignment="CENTER"
+                      textFill="WHITE">
+                  <font>
+                     <Font name="SansSerif Regular" size="12.0"/>
+                  </font>
+               </Label>
+               <Separator layoutX="100.0" layoutY="250.0" prefWidth="230.0"
+                          style="-fx-background-color: E7E9E7;"/>
+               <Label fx:id="horaCalendar3" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0"
+                      layoutY="310.0" prefHeight="15.0" prefWidth="35.0" textAlignment="CENTER"
+                      textFill="WHITE">
+                  <font>
+                     <Font name="SansSerif Regular" size="12.0"/>
+                  </font>
+               </Label>
+               <Separator layoutX="100.0" layoutY="315.0" prefWidth="230.0"
+                          style="-fx-background-color: E7E9E7;"/>
+               <Line fx:id="timeIndicator" endX="130.0" layoutX="200.0" layoutY="135.0" startX="-100.0"
+                     stroke="GREY"/>
+               <Line fx:id="timeIndicator1" endX="130.0" layoutX="200.0" layoutY="145.0" startX="-100.0"
+                     stroke="GREY"/>
+               <Line fx:id="timeIndicator2" endX="130.0" layoutX="200.0" layoutY="155.0" startX="-100.0"
+                     stroke="GREY"/>
+               <Line fx:id="timeIndicator3" endX="130.0" layoutX="200.0" layoutY="165.0" startX="-100.0"
+                     stroke="GREY"/>
+               <Line fx:id="timeIndicator4" endX="130.0" layoutX="200.0" layoutY="175.0" startX="-100.0"
+                     stroke="GREY"/>
+            </AnchorPane>
+         </VBox>
+      </Pane>
+      <VBox layoutX="20.0" layoutY="200.0" prefHeight="350.0" prefWidth="800.0"
+            style="-fx-background-color: #36393f;" styleClass="scrollPane">
+         <Pane prefHeight="100.0" prefWidth="700.0">
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="70.0" styleClass="labelTask"
+                   text="Task 📚" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="18.0"/>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND"/>
+               </cursor>
+            </Label>
+            <Label layoutX="709.0" layoutY="17.0" prefHeight="25.0" prefWidth="25.0" styleClass="labelTask"
+                   text="📝" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="18.0"/>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND"/>
+               </cursor>
+            </Label>
+            <ImageView fx:id="menuTask" fitHeight="25.0" fitWidth="35.0" layoutX="748.0" layoutY="17.0"
+                       pickOnBounds="true" preserveRatio="true" styleClass="labelTask">
+               <Image url="@images/menu.png"/>
+            </ImageView>
+            <ScrollPane fx:id="scrollPaneTask" hbarPolicy="ALWAYS" layoutX="-3.0" layoutY="98.0"
+                        prefHeight="252.0" prefWidth="802.0" style="-fx-background-color: transparent;"
+                        stylesheets="@Style/Style.css" vbarPolicy="NEVER">
+               <HBox prefHeight="237.0" prefWidth="800.0" styleClass="boxPaneTask">
+                  <VBox fx:id="boxsTask" alignment="CENTER" prefHeight="240.0" prefWidth="160.0"
+                        styleClass="boxTask" stylesheets="@Style/Style.css">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                     </HBox.margin>
+                     <children>
+                        <Pane prefHeight="93.0" prefWidth="156.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Text fx:id="taskTitleH" fill="WHITE" layoutX="15.0" layoutY="27.0"
+                                    strokeType="OUTSIDE" strokeWidth="0.0" text="No title"
+                                    wrappingWidth="120.0">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="14.0"/>
+                                 </font>
+                              </Text>
+                              <Text fx:id="taskDescriptionH" fill="WHITE" layoutX="15.0" layoutY="70.0"
+                                    strokeType="OUTSIDE" strokeWidth="0.0" text="No title"
+                                    wrappingWidth="120.0">
+                                 <font>
+                                    <Font name="SansSerif Regular" size="14.0"/>
+                                 </font>
+                              </Text>
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="boxTaskC" alignment="CENTER" layoutX="20.0" layoutY="20.0"
+                        prefHeight="240.0" prefWidth="160.0" styleClass="boxTasks"
+                        stylesheets="@Style/Style.css">
+                     <HBox.margin>
+                        <Insets bottom="10.0" top="10.0"/>
+                     </HBox.margin>
+                     <Pane prefHeight="93.0" prefWidth="156.0" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                           <Insets/>
+                        </VBox.margin>
+                        <Label fx:id="taskCountH" alignment="CENTER" layoutX="53.0" layoutY="132.0"
+                               prefHeight="16.0" prefWidth="50.0" text="Tasks" textFill="WHITE">
+                           <font>
+                              <Font name="SansSerif Bold" size="14.0"/>
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="46.0" layoutY="43.0"
+                                   pickOnBounds="true" preserveRatio="true">
+                           <Image url="@images/task.png"/>
+                        </ImageView>
+                     </Pane>
+                  </VBox>
+               </HBox>
+            </ScrollPane>
+         </Pane>
+      </VBox>
+   </Pane>
 </HBox>
