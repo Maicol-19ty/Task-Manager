@@ -7,7 +7,7 @@ module com.infinitehorizons.taskmanager {
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
-    requires com.almasb.fxgl.all;
+    requires com.almasb.fxgl.core;
     requires java.sql;
     requires mysql.connector.j;
     requires java.desktop;
