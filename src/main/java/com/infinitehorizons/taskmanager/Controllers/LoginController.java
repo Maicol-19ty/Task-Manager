@@ -2,6 +2,7 @@ package com.infinitehorizons.taskmanager.Controllers;
 
 import com.infinitehorizons.taskmanager.DataBase.Connect;
 import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -124,19 +124,22 @@ public class LoginController implements Initializable {
     public void redirectToMainPage(String userName) {
         PauseTransition pause = new PauseTransition(Duration.seconds(3));
         pause.setOnFinished(event -> {
-            try {
-                HomeController controller = new HomeController(userName);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/infinitehorizons/taskmanager/home.fxml"));
-                loader.setController(controller);
-                Parent root = loader.load();
-                Stage stage = (Stage) loginButton.getScene().getWindow();
-                Scene scene = new Scene(root, 1520, 790);
-                stage.setTitle("Task Manager - Home");
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Platform.runLater(() -> {
+                try {
+                    HomeController controller = new HomeController(userName);
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/infinitehorizons/taskmanager/home.fxml"));
+                    loader.setController(controller);
+                    Parent root = loader.load();
+                    Stage stage = (Stage) loginButton.getScene().getWindow();
+                    Scene scene = new Scene(root, 1520, 790);
+                    scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/Style/Style.css")).toExternalForm());
+                    stage.setTitle("Task Manager - Home");
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
         });
         pause.play();
     }
