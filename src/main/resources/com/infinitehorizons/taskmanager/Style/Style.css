@@ -4,21 +4,12 @@
 }
 
 .sideAnkerPane {
-    -fx-background-color: #343434;
+    -fx-background-color: #415055;
     -fx-border-color: #415055;
     -fx-border-width: 2px 2px 2px 2px;
-    -fx-border-radius: 0px 20px 20px 0px;
-    -fx-background-radius: 0px 20px 20px 0px;
+    -fx-border-radius: 0px 0px 0px 0px;
+    -fx-background-radius: 0px 0px 0px 0px;
     -fx-border-style: solid;
-    -fx-effect: dropshadow(gaussian, #415055, 10, 0, 0, 0);
-}
-
-.bar {
-    -fx-background-color: #343434;
-    -fx-border-color: #415055;
-    -fx-border-width: 2px 2px 2px 2px;
-    -fx-border-radius: 20px;
-    -fx-background-radius: 20px;
     -fx-effect: dropshadow(gaussian, #415055, 10, 0, 0, 0);
 }
 
@@ -26,23 +17,192 @@
     -fx-background-color: #E7E9E7;
 }
 
-.mostInnerPane {
-    -fx-background-color: #36393f;
-    -fx-border-color: #415055;
-    -fx-border-width: 2px ;
-    -fx-border-radius: 20px;
-    -fx-background-radius: 20px;
+.headMenu {
+    -fx-background-color: #E7E9E7;
+    -fx-background-radius: 0px 0px 50px 50px;
+    -fx-padding: 0px 0px 0px 0px;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 0px 0px 41px 41px;
+    -fx-border-style: solid;
+    -fx-border-color: #36393f;
+}
+
+.homeButton {
+    -fx-background-color: #E7E9E7;
+    -fx-border-color: #36393f;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px 20px 20px 20px;
+    -fx-background-radius: 23px 23px 23px 23px;
     -fx-border-style: solid;
     -fx-effect: dropshadow(gaussian, #415055, 10, 0, 0, 0);
 }
 
-.homeButton {
-    -fx-background-color: #36393f;
-    -fx-border-color: #415055;
+.paneBackground {
+    -fx-background-image: url('../images/backgrounPane.jpg');
+    -fx-background-size: cover;
+}
+
+#calendarBox {
+    -fx-border-color: #36393f;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-border-style: solid;
-    -fx-effect: dropshadow(gaussian, #415055, 10, 0, 0, 0);
+    -fx-effect: dropshadow(gaussian, #EDE3E4, 10, 0, 0, 0);
+}
+
+.scrollPane {
+    -fx-border-color: #36393f;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 23px 23px 23px 23px;
+    -fx-border-style: solid;
+    -fx-effect: dropshadow(gaussian, #EDE3E4, 10, 0, 0, 0);
+}
+
+.boxPaneTask {
+    -fx-background-color: #36393f;
+    -fx-background-radius: 0px 0px 0px 0px;
+    -fx-border-width: 0px 0px 2px 2px;
+    -fx-border-radius: 0px 0px 0px 0px;
+}
+
+#scrollPaneTask {
+    -fx-background-color: #E7E9E7;
+    -fx-background-radius: 0px 0px 0px 0px;
+    -fx-border-width: 0px 0px 2px 2px;
+    -fx-border-radius: 0px 0px 0px 0px;
+}
+
+.transparent {
+    -fx-background-color: rgba(0, 0, 0, 0);
+}
+
+.labelTask:hover {
+    -fx-background-color: #2d3034;
+    -fx-border-width: 8px 8px 8px 8px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.taskMenuImage {
+    -fx-background-color: #415055;
+    -fx-text-fill: #ffffff !important;
+}
+
+.menu-item:hover {
+    -fx-background-color: #2d3034;
+    -fx-text-fill: #ffffff !important;
+}
+
+.context-menu {
+    -fx-spacing: 0;
+    -fx-padding: 0;
+}
+
+.context-menu .menu-item {
+    -fx-padding: 0.5em 1em;
+    -fx-background-insets: 0;
+}
+
+#boxTaskC {
+    -fx-background-color: #2d3034;
+    -fx-border-color: #36393f;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 23px;
+    -fx-border-style: solid;
+}
+
+#boxTaskC:hover {
+    -fx-background-color: #36393f; /* Mantén el color de fondo original */
+    -fx-effect: dropshadow(gaussian, #EDE3E4, 10, 0, 0, 0);
+}
+
+.boxTask {
+    -fx-background-color: #2d3034;
+    -fx-border-color: #36393f;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 23px;
+    -fx-border-style: solid;
+}
+
+.boxTask:hover {
+    -fx-background-color: #36393f;
+    -fx-effect: dropshadow(gaussian, #EDE3E4, 10, 0, 0, 0);
+}
+
+.scrollPaneTaskP {
+    -fx-background-color: #E7E9E7;
+    -fx-background-radius: 0px 0px 0px 0px;
+    -fx-border-width: 0px 0px 2px 2px;
+    -fx-border-radius: 0px 0px 0px 0px;
+}
+
+.textArea {
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-control-inner-background: #36393f;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+    -fx-background: transparent;
+}
+
+.textArea {
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-control-inner-background: #36393f;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+    -fx-background-color: transparent;
+}
+
+.textArea .content {
+    -fx-background-color: transparent;
+}
+
+#tasksListView {
+    -fx-background-color: #36393f !important;
+    -fx-font-size: 14;
+}
+
+ListView .list-cell {
+    -fx-control-inner-background: #2d3034;
+    -fx-text-fill: rgb(255, 255, 255);
+}
+
+.list-cell .label-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-text-fill: rgb(255, 255, 255);
+}
+
+.list-cell .label-description {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgb(255, 255, 255);
+}
+
+.list-view .list-cell:selected .label-title .label-description {
+    -fx-text-fill: rgb(255, 255, 255);
+}
+
+.list-view .list-cell .label-title .label-description {
+    -fx-text-fill: rgb(255, 255, 255);
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: #36393f;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-text-fill: rgb(255, 255, 255);
+}
+
+.list-cell:filled:selected:focused {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgb(255, 255, 255);
+}
+
+.list-cell .label-title:selected, .label-description:selected {
+    -fx-text-fill: rgb(255, 255, 255);
 }
 
