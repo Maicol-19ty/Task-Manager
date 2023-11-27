@@ -57,7 +57,7 @@
          <AnchorPane prefHeight="790.0" prefWidth="580.0" style="-fx-background-color: #415055;">
             <Label alignment="CENTER" layoutX="235.0" layoutY="427.0" prefHeight="45.0" prefWidth="110.0" text="Task " textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Hack Nerd Font Bold" size="36.0" />
+                  <Font name="SansSerif Bold" size="36.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="NONE" />
@@ -68,7 +68,7 @@
             </Label>
             <Label alignment="CENTER" layoutX="211.0" layoutY="500.0" prefHeight="45.0" prefWidth="158.0" text="Manager" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Hack Nerd Font Bold" size="36.0" />
+                  <Font name="SansSerif Bold" size="36.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="NONE" />
@@ -98,7 +98,7 @@
       <AnchorPane prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #E7E9E7;" BorderPane.alignment="CENTER">
          <Label alignment="CENTER" layoutX="415.0" layoutY="65.0" prefHeight="44.0" prefWidth="110.0" text="Login" textAlignment="CENTER">
             <font>
-               <Font name="Hack Nerd Font Bold" size="36.0" />
+               <Font name="SansSerif Bold" size="36.0" />
             </font>
             <cursor>
                <Cursor fx:constant="DEFAULT" />
@@ -106,7 +106,7 @@
          </Label>
          <Label alignment="CENTER" layoutX="295.0" layoutY="263.0" prefHeight="44.0" prefWidth="120.0" text="Username" textAlignment="CENTER">
             <font>
-               <Font name="Hack Nerd Font Bold" size="24.0" />
+               <Font name="SansSerif Bold" size="24.0" />
             </font>
             <cursor>
                <Cursor fx:constant="DEFAULT" />
@@ -114,7 +114,7 @@
          </Label>
          <Label alignment="CENTER" layoutX="295.0" layoutY="364.0" prefHeight="44.0" prefWidth="120.0" text="Password" textAlignment="CENTER">
             <font>
-               <Font name="Hack Nerd Font Bold" size="24.0" />
+               <Font name="SansSerif Bold" size="24.0" />
             </font>
             <cursor>
                <Cursor fx:constant="DEFAULT" />
@@ -128,7 +128,7 @@
                <DropShadow />
             </effect>
             <font>
-               <Font name="Hack Nerd Font Regular" size="18.0" />
+               <Font name="SansSerif Regular" size="18.0" />
             </font>
          </TextField>
          <PasswordField fx:id="passwordTextField" layoutX="465.0" layoutY="368.0" prefHeight="35.0" prefWidth="230.0" promptText="Password">
@@ -139,7 +139,7 @@
                <DropShadow />
             </effect>
             <font>
-               <Font name="Hack Nerd Font Regular" size="18.0" />
+               <Font name="SansSerif Regular" size="18.0" />
             </font>
          </PasswordField>
          <TextField fx:id="passwordShow" layoutX="465.0" layoutY="368.0" prefHeight="35.0" prefWidth="230.0" promptText="Password" visible="false">
@@ -158,7 +158,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
             <font>
-               <Font name="Hack Nerd Font Bold" size="24.0" />
+               <Font name="SansSerif Bold" size="24.0" />
             </font>
             <effect>
                <DropShadow />
@@ -169,7 +169,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
             <font>
-               <Font name="Hack Nerd Font Bold" size="24.0" />
+               <Font name="SansSerif Bold" size="24.0" />
             </font>
             <effect>
                <DropShadow />
@@ -177,7 +177,7 @@
          </Button>
          <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="178.0" layoutY="530.0" prefHeight="44.0" prefWidth="584.0" textAlignment="CENTER" textFill="RED">
             <font>
-               <Font name="Hack Nerd Font Bold" size="18.0" />
+               <Font name="SansSerif Bold" size="18.0" />
             </font>
             <cursor>
                <Cursor fx:constant="DEFAULT" />
@@ -185,12 +185,12 @@
          </Label>
          <CheckBox fx:id="selectShowPass" layoutX="465.0" layoutY="428.0" mnemonicParsing="false" onAction="#showPassOnAction" text="Show Password">
             <font>
-               <Font name="Hack Nerd Font Bold" size="14.0" />
+               <Font name="SansSerif Bold" size="14.0" />
             </font>
          </CheckBox>
          <Hyperlink fx:id="forgotPass" layoutX="460.0" layoutY="463.0" onAction="#forgotPassOnAction" text="Forgot Password?">
             <font>
-               <Font name="Hack Nerd Font Regular" size="14.0" />
+               <Font name="SansSerif Regular" size="14.0" />
             </font>
          </Hyperlink>
       </AnchorPane>
