@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -23,6 +24,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
 
 public class HomeController implements Initializable {
 
@@ -55,6 +57,14 @@ public class HomeController implements Initializable {
     private ImageView menuTask;
     @FXML
     private Button taskButton;
+    @FXML
+    private Label goToTaskPage;
+    @FXML
+    private Tooltip newTaskTool;
+    @FXML
+    private VBox boxTaskC;
+    @FXML
+    private ImageView logoutEvent;
 
     public HomeController(String userName) {
         this.userName = userName;
@@ -126,6 +136,29 @@ public class HomeController implements Initializable {
                 contextMenu.show(menuTask, menuX, menuY);
             }
         });
+
+        goToTaskPage.setOnMouseClicked(event -> {
+            if (event.getButton() == MouseButton.PRIMARY) {
+                redirectToTaskPage(userName);
+            }
+        });
+
+        boxTaskC.setOnMouseClicked(event -> {
+            if (event.getButton() == MouseButton.PRIMARY) {
+                redirectToTaskPage(userName);
+            }
+        });
+
+        logoutEvent.setOnMouseClicked(event -> {
+            if (event.getButton() == MouseButton.PRIMARY) {
+                try {
+                    logout();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     public static String generateGreeting(String userName) {
@@ -243,5 +276,9 @@ public class HomeController implements Initializable {
                 e.printStackTrace();
             }
         });
+    }
+
+    private void logout() throws IOException {
+        System.exit(0);
     }
 }
