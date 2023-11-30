@@ -45,6 +45,8 @@ public class LoginController implements Initializable {
     private Button loginButton;
     @FXML
     private CheckBox selectShowPass;
+    @FXML
+    private Button registerButton;
 
     public void registerButtonOnAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/register.fxml")));
@@ -90,9 +92,17 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
-        File brandingFile = new File("src//main//resources//com//infinitehorizons//taskmanager//images//task-logo-2.png");
+        File brandingFile = new File(Objects.requireNonNull(getClass().getResource("/com/infinitehorizons/taskmanager/images/task-logo-2.png")).getFile());
         Image brandingImage = new Image(brandingFile.toURI().toString());
         brandingImageView.setImage(brandingImage);
+
+        registerButton.setOnAction(event -> {
+            try {
+                registerButtonOnAction(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 
@@ -120,7 +130,6 @@ public class LoginController implements Initializable {
             e.getCause();
         }
     }
-
     public void redirectToMainPage(String userName) {
         PauseTransition pause = new PauseTransition(Duration.seconds(3));
         pause.setOnFinished(event -> {
