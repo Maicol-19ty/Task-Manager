@@ -59,13 +59,12 @@ public class RegisterController implements Initializable {
     @FXML
     private Label passwordMatchLabel;
     private List<TextField> textFields;
-    private String username;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         System.out.println("Pestaña de registro inicializada.");
-        File regbrandingFile = new File("src/main/resources/com/infinitehorizons/taskmanager/images/task-logo-2.png");
+        File regbrandingFile = new File(getClass().getResource("/com/infinitehorizons/taskmanager/images/task-logo-2.png").getFile());
         if (regbrandingFile.exists()) {
             Image regbrandingImage = new Image(regbrandingFile.toURI().toString());
             regbrandingImageView.setImage(regbrandingImage);
@@ -155,7 +154,7 @@ public class RegisterController implements Initializable {
                     stopRegisteringAnimation();
                 } else if (existingEmail.equals(emailTextField.getText())) {
                     sendReminderEmail(emailTextField.getText(), existingUsername);
-                    registerMessageLabel.setText("Check your email, there is already a \n\nregistered user with this email");
+                    registerMessageLabel.setText("Check your email, there is already a registered user with this email");
                 }
             } else {
                 registerMessageLabel.setText("Registering...");
