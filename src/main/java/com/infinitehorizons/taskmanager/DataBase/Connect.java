@@ -17,7 +17,7 @@ public class Connect {
             Class.forName("com.mysql.cj.jdbc.Driver");
             databaseLink = DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Failed connection: n\nError:" + e);
+            System.out.println("Failed connection: \nError:" + e);
 
         }
         return databaseLink;
