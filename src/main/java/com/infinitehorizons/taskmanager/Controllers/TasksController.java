@@ -2,6 +2,7 @@ package com.infinitehorizons.taskmanager.Controllers;
 
 import com.infinitehorizons.taskmanager.Core.Task;
 import com.infinitehorizons.taskmanager.DataBase.Connect;
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,10 +10,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,6 +40,10 @@ public class TasksController implements Initializable {
     private ListView<VBox> tasksListView;
     @FXML
     private Button homeButton;
+    @FXML
+    private Label taskLabel;
+    @FXML
+    private ImageView logoutEvent;
 
     private static final String PROVISIONAL_TEXT = "Write the title...";
     private static final String PROVISIONAL_DESCRIPTION = "Write the description...";
@@ -78,10 +86,27 @@ public class TasksController implements Initializable {
 
         saveTask.setOnAction(event -> {
             handleCreateNewTask();
-            mostrarTareasEnListView();
         });
 
-        mostrarTareasEnListView();
+        showTasksInListView();
+
+        List<Task> tasks = obtenerTareasDesdeLaBaseDeDatos();
+        if (!tasks.isEmpty()) {
+            int firstTaskId = tasks.get(0).getId();
+            handleEditTask(firstTaskId);
+            loadTaskData(firstTaskId);
+        }
+
+        logoutEvent.setOnMouseClicked(event -> {
+            if (event.getButton() == MouseButton.PRIMARY) {
+                try {
+                    logout();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     public void redirectToHomePage() {
@@ -127,22 +152,19 @@ public class TasksController implements Initializable {
     }
 
     public void handleCreateNewTask() {
-        String title = titleTaskArea.getText();
-        String description = descriptionTaskArea.getText();
+        String title = titleTaskArea.getText().trim();
+        String description = descriptionTaskArea.getText().trim();
         int userId = getUserId(userName);
 
-        if (title.equals(PROVISIONAL_TEXT)) {
-            title = "";
-            titleTaskArea.clear();
+        if (title.isEmpty() || title.equals(PROVISIONAL_TEXT)) {
+            taskLabel.setText("Please complete the title.");
+            cleanLabel();
+            return;
         }
 
-        if (description.equals(PROVISIONAL_DESCRIPTION)) {
-            description = "";
-            descriptionTaskArea.clear();
-        }
-
-        if (title.isEmpty() || description.isEmpty()) {
-            System.out.println("Por favor, completa tanto el título como la descripción.");
+        if (description.isEmpty() || description.equals(PROVISIONAL_DESCRIPTION)) {
+            taskLabel.setText("Please complete the description.");
+            cleanLabel();
             return;
         }
 
@@ -160,7 +182,10 @@ public class TasksController implements Initializable {
         if (descriptionTaskArea.getText().isEmpty()) {
             descriptionTaskArea.setText(PROVISIONAL_DESCRIPTION);
         }
+
+        showTasksInListView();
     }
+
 
     private int getUserId(String username) {
         int userId = -1;
@@ -193,7 +218,7 @@ public class TasksController implements Initializable {
             Parent parent = ((Label) source).getParent();
 
             if (parent instanceof VBox tareaBox) {
-                int taskId = obtenerIdDeLaTareaDesdeElNodo(tareaBox);
+                int taskId = getTaskIdFromNode(tareaBox);
                 handleEditTask(taskId);
                 loadTaskData(taskId);
             }
@@ -218,7 +243,7 @@ public class TasksController implements Initializable {
         }
     }
 
-    private int obtenerIdDeLaTareaDesdeElNodo(Object nodo) {
+    private int getTaskIdFromNode(Object nodo) {
         if (nodo instanceof VBox tareaBox) {
             Object idObject = tareaBox.getUserData();
 
@@ -229,69 +254,71 @@ public class TasksController implements Initializable {
         return -1;
     }
 
-    public void mostrarTareasEnListView() {
-        System.out.println("Mostrando tareas en ListView...");
+    public void showTasksInListView() {
+        taskLabel.setText("Loading tasks in the list...");
 
         List<Task> tasks = obtenerTareasDesdeLaBaseDeDatos();
 
         tasksListView.getItems().clear();
 
         tasks.forEach(task -> {
-            VBox tareaBox = crearTareaBox(task);
-            tasksListView.getItems().add(tareaBox);
+            VBox taskBox = createTaskBox(task);
+            tasksListView.getItems().add(taskBox);
         });
+
+        cleanLabel();
     }
 
-    private VBox crearTareaBox(Task task) {
-        VBox tareaBox = new VBox();
+    private VBox createTaskBox(Task task) {
+        VBox taskBox = new VBox();
         int idTask = task.getId();
-        tareaBox.setUserData(idTask);
+        taskBox.setUserData(idTask);
 
-        Label tituloLabel = new Label(task.getTitulo());
-        tituloLabel.getStyleClass().add("label-title");
+        Label titleLabel = new Label(task.getTitulo());
+        titleLabel.getStyleClass().add("label-title");
 
-        String descripcion = task.getDescripcion();
-        String primeras10Palabras = obtenerPrimerasPalabras(descripcion, 10);
-        Label descripcionLabel = new Label(primeras10Palabras);
-        descripcionLabel.getStyleClass().add("label-description");
+        String description = task.getDescripcion();
+        String first10words = getFirstWords(description);
+        Label descriptionLabel = new Label(first10words);
+        descriptionLabel.getStyleClass().add("label-description");
 
-        tareaBox.getChildren().addAll(tituloLabel, descripcionLabel);
+        taskBox.getChildren().addAll(titleLabel, descriptionLabel);
 
-        tareaBox.setOnMouseClicked(event -> {
+        taskBox.setOnMouseClicked(event -> {
             handleTaskClick(event);
-            int taskId = obtenerIdDeLaTareaDesdeElNodo(tareaBox);
+            int taskId = getTaskIdFromNode(taskBox);
             handleEditTask(taskId);
             loadTaskData(taskId);
         });
-        return tareaBox;
+        return taskBox;
     }
 
     private List<Task> obtenerTareasDesdeLaBaseDeDatos() {
-        List<Task> listaDeTareas = new ArrayList<>();
+        List<Task> taskOfList = new ArrayList<>();
 
         try (PreparedStatement statement = connectDB.prepareStatement("SELECT id_task, title_task, description_task FROM tasks WHERE username = ?")) {
             statement.setString(1, userName);
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    Task tarea = new Task();
-                    tarea.setId(resultSet.getInt("id_task"));
-                    tarea.setTitulo(resultSet.getString("title_task"));
-                    tarea.setDescripcion(resultSet.getString("description_task"));
-                    listaDeTareas.add(tarea);
+                    Task task = new Task();
+                    task.setId(resultSet.getInt("id_task"));
+                    task.setTitulo(resultSet.getString("title_task"));
+                    task.setDescripcion(resultSet.getString("description_task"));
+                    taskOfList.add(task);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return listaDeTareas;
+        return taskOfList;
     }
 
-    private String obtenerPrimerasPalabras(String texto, int n) {
-        String[] palabras = texto.split("\\s+");
-        int longitud = Math.min(n, palabras.length);
-        return String.join(" ", Arrays.copyOfRange(palabras, 0, longitud));
+    private String getFirstWords(String texto) {
+        String[] words = texto.split("\\s+");
+        int length = Math.min(10, words.length);
+        return String.join(" ", Arrays.copyOfRange(words, 0, length));
     }
 
     @FXML
@@ -301,9 +328,10 @@ public class TasksController implements Initializable {
         if (selectedTaskId != -1) {
             deleteTask(selectedTaskId);
 
-            mostrarTareasEnListView();
+            showTasksInListView();
         } else {
-            System.out.println("Por favor, selecciona una tarea para eliminar.");
+            taskLabel.setText("Please select a task to delete.");
+            cleanLabel();
         }
     }
 
@@ -311,7 +339,8 @@ public class TasksController implements Initializable {
         try (PreparedStatement statement = connectDB.prepareStatement("DELETE FROM tasks WHERE id_task = ?")) {
             statement.setInt(1, taskId);
             statement.executeUpdate();
-            System.out.println("Tarea eliminada con éxito.");
+            taskLabel.setText("Task deleted successfully.");
+            cleanLabel();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -328,6 +357,18 @@ public class TasksController implements Initializable {
             }
         }
         return -1;
+    }
+
+    private void cleanLabel() {
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(5));
+        pauseTransition.setOnFinished(event -> {
+            taskLabel.setText("");
+        });
+        pauseTransition.play();
+    }
+
+    private void logout() throws IOException {
+        System.exit(0);
     }
 
 }
