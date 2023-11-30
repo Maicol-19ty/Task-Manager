@@ -18,7 +18,7 @@
       <AnchorPane prefHeight="720.0" prefWidth="580.0" style="-fx-background-color: #415055;" BorderPane.alignment="CENTER">
          <Label alignment="CENTER" layoutX="211.0" layoutY="500.0" prefHeight="45.0" prefWidth="158.0" text="Manager" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font name="Hack Nerd Font Bold" size="36.0" />
+               <Font name="SansSerif Bold" size="36.0" />
             </font>
             <cursor>
                <Cursor fx:constant="NONE" />
@@ -33,9 +33,9 @@
             </cursor>
             <Image url="@images/task-logo-2.png" />
          </ImageView>
-         <Label alignment="CENTER" layoutX="235.0" layoutY="427.0" prefHeight="45.0" prefWidth="110.0" text="Task " textAlignment="CENTER" textFill="WHITE">
+         <Label alignment="CENTER" layoutX="228.0" layoutY="422.0" prefHeight="45.0" prefWidth="110.0" text="Task " textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font name="Hack Nerd Font Bold" size="36.0" />
+               <Font name="SansSerif Bold" size="36.0" />
             </font>
             <cursor>
                <Cursor fx:constant="NONE" />
@@ -59,15 +59,15 @@
          <children>
             <Label alignment="CENTER" layoutX="275.0" layoutY="65.0" prefHeight="44.0" prefWidth="391.0" text="Change of password" textAlignment="CENTER">
                <font>
-                  <Font name="Hack Nerd Font Bold" size="36.0" />
+                  <Font name="SansSerif Bold" size="36.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </Label>
-            <Label fx:id="forgotMessageLabel" alignment="CENTER" layoutX="178.0" layoutY="550.0" prefHeight="44.0" prefWidth="584.0" textAlignment="CENTER" textFill="RED">
+            <Label fx:id="forgotMessageLabel" alignment="CENTER" layoutX="178.0" layoutY="550.0" prefHeight="44.0" prefWidth="584.0" textAlignment="CENTER" textFill="RED" wrapText="true">
                <font>
-                  <Font name="Hack Nerd Font Bold" size="18.0" />
+                  <Font name="SansSerif Bold" size="18.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
@@ -75,7 +75,7 @@
             </Label>
             <Label alignment="CENTER" layoutX="235.0" layoutY="225.0" prefHeight="45.0" prefWidth="120.0" text="Email" textAlignment="CENTER">
                <font>
-                  <Font name="Hack Nerd Font Bold" size="24.0" />
+                  <Font name="SansSerif Bold" size="24.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
@@ -89,12 +89,12 @@
                   <DropShadow />
                </effect>
                <font>
-                  <Font name="Hack Nerd Font Regular" size="18.0" />
+                  <Font name="SansSerif Regular" size="18.0" />
                </font>
             </TextField>
             <Label alignment="CENTER" layoutX="235.0" layoutY="311.0" prefHeight="44.0" prefWidth="120.0" text="Username" textAlignment="CENTER">
                <font>
-                  <Font name="Hack Nerd Font Bold" size="24.0" />
+                  <Font name="SansSerif Bold" size="24.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
@@ -108,12 +108,12 @@
                   <DropShadow />
                </effect>
                <font>
-                  <Font name="Hack Nerd Font Regular" size="18.0" />
+                  <Font name="SansSerif Regular" size="18.0" />
                </font>
             </TextField>
             <Label alignment="CENTER" layoutX="208.0" layoutY="396.0" prefHeight="44.0" prefWidth="175.0" text="New Password" textAlignment="CENTER">
                <font>
-                  <Font name="Hack Nerd Font Bold" size="24.0" />
+                  <Font name="SansSerif Bold" size="24.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
@@ -127,12 +127,12 @@
                   <DropShadow />
                </effect>
                <font>
-                  <Font name="Hack Nerd Font Regular" size="18.0" />
+                  <Font name="SansSerif Regular" size="18.0" />
                </font>
             </PasswordField>
             <Label alignment="CENTER" layoutX="177.0" layoutY="481.0" prefHeight="44.0" prefWidth="236.0" text="Confirm Password" textAlignment="CENTER">
                <font>
-                  <Font name="Hack Nerd Font Bold" size="24.0" />
+                  <Font name="SansSerif Bold" size="24.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
@@ -146,12 +146,12 @@
                   <DropShadow />
                </effect>
                <font>
-                  <Font name="Hack Nerd Font Regular" size="18.0" />
+                  <Font name="SansSerif Regular" size="18.0" />
                </font>
             </PasswordField>
             <Label fx:id="passwordMatchLabel" alignment="CENTER" layoutX="510.0" layoutY="452.0" prefHeight="14.0" prefWidth="150.0" textAlignment="CENTER" textFill="RED">
                <font>
-                  <Font name="Hack Nerd Font Bold" size="12.0" />
+                  <Font name="SansSerif Bold" size="12.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
@@ -162,18 +162,18 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <font>
-                  <Font name="Hack Nerd Font Bold" size="24.0" />
+                  <Font name="SansSerif Bold" size="24.0" />
                </font>
                <effect>
                   <DropShadow />
                </effect>
             </Button>
-            <Button fx:id="loginButton" contentDisplay="CENTER" layoutX="295.0" layoutY="700.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="46.0" prefWidth="350.0" style="-fx-background-color: #415055;" text="Cancel" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="loginButton" contentDisplay="CENTER" layoutX="295.0" layoutY="695.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="46.0" prefWidth="350.0" style="-fx-background-color: #415055;" text="Cancel" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <font>
-                  <Font name="Hack Nerd Font Bold" size="24.0" />
+                  <Font name="SansSerif Bold" size="24.0" />
                </font>
                <effect>
                   <DropShadow />

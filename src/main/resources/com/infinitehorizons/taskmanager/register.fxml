@@ -18,7 +18,7 @@
       <AnchorPane prefHeight="720.0" prefWidth="580.0" style="-fx-background-color: #415055;" BorderPane.alignment="CENTER">
          <Label alignment="CENTER" layoutX="211.0" layoutY="500.0" prefHeight="45.0" prefWidth="158.0" text="Manager" textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font name="Hack Nerd Font Bold" size="36.0" />
+               <Font name="SansSerif Bold" size="36.0" />
             </font>
             <cursor>
                <Cursor fx:constant="NONE" />
@@ -35,7 +35,7 @@
          </ImageView>
          <Label alignment="CENTER" layoutX="235.0" layoutY="427.0" prefHeight="45.0" prefWidth="110.0" text="Task " textAlignment="CENTER" textFill="WHITE">
             <font>
-               <Font name="Hack Nerd Font Bold" size="36.0" />
+               <Font name="SansSerif Bold" size="36.0" />
             </font>
             <cursor>
                <Cursor fx:constant="NONE" />
@@ -58,7 +58,7 @@
       <AnchorPane prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #E7E9E7;" BorderPane.alignment="CENTER">
          <Label alignment="CENTER" layoutX="393.0" layoutY="50.0" prefHeight="44.0" prefWidth="154.0" text="Sing Up" textAlignment="CENTER">
             <font>
-               <Font name="Hack Nerd Font Bold" size="36.0" />
+               <Font name="SansSerif Bold" size="36.0" />
             </font>
             <cursor>
                <Cursor fx:constant="DEFAULT" />
@@ -66,7 +66,7 @@
          </Label>
          <Label alignment="CENTER" layoutX="235.0" layoutY="352.0" prefHeight="44.0" prefWidth="120.0" text="Username" textAlignment="CENTER">
             <font>
-               <Font name="Hack Nerd Font Bold" size="24.0" />
+               <Font name="SansSerif Bold" size="24.0" />
             </font>
             <cursor>
                <Cursor fx:constant="DEFAULT" />
@@ -74,7 +74,7 @@
          </Label>
          <Label alignment="CENTER" layoutX="235.0" layoutY="140.0" prefHeight="45.0" prefWidth="120.0" text="Email" textAlignment="CENTER">
             <font>
-               <Font name="Hack Nerd Font Bold" size="24.0" />
+               <Font name="SansSerif Bold" size="24.0" />
             </font>
             <cursor>
                <Cursor fx:constant="DEFAULT" />
@@ -82,7 +82,7 @@
          </Label>
          <Label alignment="CENTER" layoutX="223.0" layoutY="210.0" prefHeight="45.0" prefWidth="145.0" text="First Name" textAlignment="CENTER">
             <font>
-               <Font name="Hack Nerd Font Bold" size="24.0" />
+               <Font name="SansSerif Bold" size="24.0" />
             </font>
             <cursor>
                <Cursor fx:constant="DEFAULT" />
@@ -90,7 +90,7 @@
          </Label>
          <Label alignment="CENTER" layoutX="223.0" layoutY="282.0" prefHeight="44.0" prefWidth="145.0" text="Last Name" textAlignment="CENTER">
             <font>
-               <Font name="Hack Nerd Font Bold" size="24.0" />
+               <Font name="SansSerif Bold" size="24.0" />
             </font>
             <cursor>
                <Cursor fx:constant="DEFAULT" />
@@ -98,7 +98,7 @@
          </Label>
          <Label alignment="CENTER" layoutX="223.0" layoutY="422.0" prefHeight="44.0" prefWidth="145.0" text="Password" textAlignment="CENTER">
             <font>
-               <Font name="Hack Nerd Font Bold" size="24.0" />
+               <Font name="SansSerif Bold" size="24.0" />
             </font>
             <cursor>
                <Cursor fx:constant="DEFAULT" />
@@ -106,7 +106,7 @@
          </Label>
          <Label alignment="CENTER" layoutX="177.0" layoutY="492.0" prefHeight="44.0" prefWidth="236.0" text="Confirm Password" textAlignment="CENTER">
             <font>
-               <Font name="Hack Nerd Font Bold" size="24.0" />
+               <Font name="SansSerif Bold" size="24.0" />
             </font>
             <cursor>
                <Cursor fx:constant="DEFAULT" />
@@ -120,7 +120,7 @@
                <DropShadow />
             </effect>
             <font>
-               <Font name="Hack Nerd Font Regular" size="18.0" />
+               <Font name="SansSerif Regular" size="18.0" />
             </font>
          </TextField>
          <TextField fx:id="firstnameTextField" layoutX="470.0" layoutY="215.0" onKeyPressed="#handleEnterKey" prefHeight="35.0" prefWidth="230.0" promptText="First Name">
@@ -131,7 +131,7 @@
                <DropShadow />
             </effect>
             <font>
-               <Font name="Hack Nerd Font Regular" size="18.0" />
+               <Font name="SansSerif Regular" size="18.0" />
             </font>
          </TextField>
          <TextField fx:id="lastnameTextField" layoutX="470.0" layoutY="286.0" onKeyPressed="#handleEnterKey" prefHeight="35.0" prefWidth="230.0" promptText="Last Name">
@@ -142,7 +142,7 @@
                <DropShadow />
             </effect>
             <font>
-               <Font name="Hack Nerd Font Regular" size="18.0" />
+               <Font name="SansSerif Regular" size="18.0" />
             </font>
          </TextField>
          <TextField fx:id="usernameTextField" layoutX="470.0" layoutY="356.0" onKeyPressed="#handleEnterKey" prefHeight="35.0" prefWidth="230.0" promptText="Username">
@@ -153,7 +153,7 @@
                <DropShadow />
             </effect>
             <font>
-               <Font name="Hack Nerd Font Regular" size="18.0" />
+               <Font name="SansSerif Regular" size="18.0" />
             </font>
          </TextField>
          <PasswordField fx:id="passwordTextField" layoutX="470.0" layoutY="426.0" onKeyPressed="#handleEnterKey" onKeyReleased="#passwordKeyRelease" prefHeight="35.0" prefWidth="230.0" promptText="Password">
@@ -164,7 +164,7 @@
                <DropShadow />
             </effect>
             <font>
-               <Font name="Hack Nerd Font Regular" size="18.0" />
+               <Font name="SansSerif Regular" size="18.0" />
             </font>
          </PasswordField>
          <PasswordField fx:id="confpasswordTextField" layoutX="470.0" layoutY="496.0" onKeyPressed="#handleEnterKey" onKeyReleased="#passwordKeyRelease" prefHeight="35.0" prefWidth="230.0" promptText="Password">
@@ -175,12 +175,12 @@
                <DropShadow />
             </effect>
             <font>
-               <Font name="Hack Nerd Font Regular" size="18.0" />
+               <Font name="SansSerif Regular" size="18.0" />
             </font>
          </PasswordField>
-         <Label fx:id="registerMessageLabel" alignment="CENTER" layoutX="178.0" layoutY="545.0" prefHeight="65.0" prefWidth="584.0" textAlignment="CENTER" textFill="RED">
+         <Label fx:id="registerMessageLabel" alignment="CENTER" layoutX="178.0" layoutY="545.0" prefHeight="65.0" prefWidth="584.0" textAlignment="CENTER" textFill="RED" wrapText="true">
             <font>
-               <Font name="Hack Nerd Font Bold" size="18.0" />
+               <Font name="SansSerif Bold" size="18.0" />
             </font>
             <cursor>
                <Cursor fx:constant="DEFAULT" />
@@ -191,7 +191,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
             <font>
-               <Font name="Hack Nerd Font Bold" size="24.0" />
+               <Font name="SansSerif Bold" size="24.0" />
             </font>
             <effect>
                <DropShadow />
@@ -202,7 +202,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
             <font>
-               <Font name="Hack Nerd Font Bold" size="24.0" />
+               <Font name="SansSerif Bold" size="24.0" />
             </font>
             <effect>
                <DropShadow />
@@ -210,7 +210,7 @@
          </Button>
          <Label fx:id="passwordMatchLabel" alignment="CENTER" layoutX="510.0" layoutY="470.0" prefHeight="14.0" prefWidth="150.0" textAlignment="CENTER" textFill="RED">
             <font>
-               <Font name="Hack Nerd Font Bold" size="12.0" />
+               <Font name="SansSerif Bold" size="12.0" />
             </font>
             <cursor>
                <Cursor fx:constant="DEFAULT" />
