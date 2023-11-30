@@ -1,3 +1,5 @@
 Manifest-Version: 1.0
 Main-Class: com.infinitehorizons.taskmanager.Builder
-Icon: ./task-icon-2.png
+Icon: task-icon-2.png
+Class-Path: com.infinitehorizons.taskmanager.Builder
+
